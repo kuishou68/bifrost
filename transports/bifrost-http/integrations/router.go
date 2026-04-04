@@ -2312,6 +2312,8 @@ func (g *GenericRouter) handleStreaming(ctx *fasthttp.RequestCtx, bifrostCtx *sc
 			if traceCompleter != nil {
 				traceCompleter()
 			}
+			schemas.ReleaseHTTPRequest(httpReq)
+			reader.Done()
 		}()
 
 		// Create encoder for AWS Event Stream if needed
